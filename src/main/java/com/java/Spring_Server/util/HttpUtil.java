@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.ModelAndView;
 
@@ -59,4 +60,24 @@ public class HttpUtil {
 		
 	}
 	
+	public static boolean checkLogin(HttpSession session) {
+		boolean check;
+		if(session == null) {
+			System.out.println("세션 정보가 없습니다");
+		}
+		else {
+			HashMap<String, Object> userMap = (HashMap<String, Object>) session.getAttribute("user"); 			
+			if(userMap == null) {
+				System.out.println("로그인 되어 있지않습니다.");
+				return false;
+			}
+			else {
+				for(String data : userMap.keySet()) {
+					System.out.println("data :" + data +" data :"+userMap.get(data));
+				}
+				return true;
+			}
+		}
+		return false;
+	}
 }

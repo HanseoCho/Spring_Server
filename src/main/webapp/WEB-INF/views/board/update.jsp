@@ -41,11 +41,13 @@
 			.done(function(data){
 				console.log("2");
 				var d = JSON.parse(data);
-				update(d);					
+				console.log("3")
+				update(d);
 			});
 		});
 	
 		function update(d){
+			console.log("d.upload : "+d.upload);
 			$.ajax({
 				  type : "post",
 				  url : "bud",
@@ -95,7 +97,7 @@
 </script>
 </head>
 <body>
-	<h1>글작성!</h1>
+	<h1>글수정!</h1>
 	<form action="" enctype="muiltpart/form-data" method="post">
 		<input type="text" name="boardTitle" placeholder="제목을 입력해주세요."><br>
 		<input type="text" name="boardContents" placeholder="내용을 입력하세요."><br>
